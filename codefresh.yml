@@ -1,7 +1,8 @@
 version: '1.0'
 steps:
   cf-cli-step:
-    image: codefreshio/cf-cli:latest
+    image: node:latest
     commands:
-        - node index.js login --token ${{TOKEN}} -u ${{USER}}
-        - node index.js builds build -a ${{ACCOUNT}} -o ${{REPO_OWNER}} -r ${{REPO_NAME}} --branch ${{BRANCH}} --pipelineName ${{PIPELINE_NAME}}
+      - npm install -g @codefresh-io/cf-cli
+      - cf-cli login --token ${{TOKEN}} -u ${{USER}}
+      - cf-cli builds build -a ${{ACCOUNT}} -o ${{REPO_OWNER}} -r ${{REPO_NAME}} --branch ${{BRANCH}} --pipelineName ${{PIPELINE_NAME}}
