@@ -1,12 +1,12 @@
 version: '1.0'
 steps:
   # trigger the certain build
-  cf-cli-step:
-    image: node:latest
-    commands:
-      - npm install -g @codefresh-io/cf-cli
-      - cf-cli login --token ${{TOKEN}} -u ${{USER}}
-      - cf-cli builds build -a ${{ACCOUNT}} -o ${{REPO_OWNER}} -r ${{REPO_NAME}} --branch ${{BRANCH}} --pipelineName ${{PIPELINE_NAME}}
+#  cf-cli-step:
+#    image: node:latest
+#    commands:
+#      - npm install -g @codefresh-io/cf-cli
+#      - cf-cli login --token ${{TOKEN}} -u ${{USER}}
+#      - cf-cli builds build -a ${{ACCOUNT}} -o ${{REPO_OWNER}} -r ${{REPO_NAME}} --branch ${{BRANCH}} --pipelineName ${{PIPELINE_NAME}}
 
   cf-cli-stop-composition:
     image: node:latest
