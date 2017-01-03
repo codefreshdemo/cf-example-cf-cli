@@ -12,11 +12,10 @@ steps:
   cf-cli-create-composition:
     image: node:latest
     commands:
-      - pwd
       - ls
-#      - npm install -g @codefresh-io/cf-cli
-#      - cf-cli login --token ${{TOKEN}} -u ${{USER}}
-#      - cf-cli compositions create --file
+      - npm install -g @codefresh-io/cf-cli
+      - cf-cli login --token ${{TOKEN}} -u ${{USER}}
+      - cf-cli compositions create --file compose-payload.json
 
   # stop composition by id
 #  cf-cli-stop-composition:
