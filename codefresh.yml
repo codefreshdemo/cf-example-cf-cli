@@ -13,9 +13,10 @@ steps:
     image: node:latest
     commands:
       - pwd
-      - npm install -g @codefresh-io/cf-cli
-      - cf-cli login --token ${{TOKEN}} -u ${{USER}}
-      - cf-cli compositions create --file
+      - ls
+#      - npm install -g @codefresh-io/cf-cli
+#      - cf-cli login --token ${{TOKEN}} -u ${{USER}}
+#      - cf-cli compositions create --file
 
   # stop composition by id
 #  cf-cli-stop-composition:
