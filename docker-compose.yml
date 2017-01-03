@@ -1,0 +1,8 @@
+version: '2'
+services:
+  express-angular-master:
+    image: 'ncodefresh/express-angular:master'
+    environment:
+      TEST: $TEST
+    ports:
+      - 9000

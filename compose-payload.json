@@ -1,0 +1,6 @@
+{
+  "isAdvanced": false,
+  "vars": [],
+  "yamlJson": "docker-compose.yml",
+  "name": "cf-cli-composition"
+}
