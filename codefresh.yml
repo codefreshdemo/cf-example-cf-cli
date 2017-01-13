@@ -1,21 +1,21 @@
 version: '1.0'
 steps:
-  # trigger the certain build
-#  cf-cli-step:
-#    image: node:latest
-#    commands:
-#      - npm install -g @codefresh-io/cf-cli
-#      - cf-cli login --token ${{TOKEN}} -u ${{USER}}
-#      - cf-cli builds build -a ${{ACCOUNT}} -o ${{REPO_OWNER}} -r ${{REPO_NAME}} --branch ${{BRANCH}} --pipelineName ${{PIPELINE_NAME}}
-
-  # create a composition
-  cf-cli-create-composition:
+  # trigger the certain pipeline
+  cf-cli-step:
     image: node:latest
     commands:
-      - ls
       - npm install -g @codefresh-io/cf-cli
       - cf-cli login --token ${{TOKEN}} -u ${{USER}}
-      - cf-cli compositions create --file compose-payload.json
+      - cf-cli builds build -a ${{ACCOUNT}} -o ${{REPO_OWNER}} -r ${{REPO_NAME}} --branch ${{BRANCH}} --pipelineName ${{PIPELINE_NAME}}
+
+  # create a composition
+#  cf-cli-create-composition:
+#    image: node:latest
+#    commands:
+#      - ls
+#      - npm install -g @codefresh-io/cf-cli
+#      - cf-cli login --token ${{TOKEN}} -u ${{USER}}
+#      - cf-cli compositions create --file compose-payload.json
 
   # stop composition by id
 #  cf-cli-stop-composition:
