@@ -1,4 +1,34 @@
-# cf-example-cf-cli
+# Welcome
+
+So, you've decided to try Codefresh? Welcome on board!
+
+Using this repository we'll help you get up to speed with basic functionality such as: *compiling*, *testing* and *building Docker images*.
+
+This project uses `Node Js` to build an application which will eventually become a distributable Docker image.
+
+## Looking around
+
+In the root of this repository you'll find a file named `codefresh.yml`, this is our [build descriptor](https://docs.codefresh.io/docs/what-is-the-codefresh-yaml) and it describes the different steps that comprise our process.
+Let's quickly review the contents of this file:
+
+### Compiling and testing
+
+To compile and test our code we use Codefresh's [Freestyle step](https://docs.codefresh.io/docs/steps#section-freestyle).
+
+The Freestyle step basically let's you say "Hey, Codefresh! Here's a Docker image. Create a new container and run these commands for me, will ya?"
+
+```yml
+cf-cli-step:
+    image: node:latest
+    commands:
+      - npm install -g @codefresh-io/cf-cli
+      - cf-cli login --token ${{TOKEN}} -u ${{USER}}
+      - cf-cli builds build -a ${{ACCOUNT}} -o ${{REPO_OWNER}} -r ${{REPO_NAME}} --branch ${{BRANCH}} --pipelineName ${{PIPELINE_NAME}}
+```
+
+The `image` field states which image should be used when creating the container (Similar to Travis CI's `language` or circleci`s `machine`).
+
+The `commands` field is how you specify all the commands that you'd like to execute
 
 # Codefresh command line manager
 This package provides a unified command line interface to Codefresh.
@@ -72,3 +102,21 @@ $ cf-cli compositions run [options]
 | --tokenFile      |       |          | string | access token file, default: "$HOME.codefresh/accessToken.json" |
 | --logLevel       | --log |          | string | choices: "error", "info", "debug"; default: "error" |
 | --help           | -h    |          | boolean | show list of options for command |
+
+
+## Using This Example
+
+To use this example:
+
+* Fork this repository to your own [INSERT_SCM_SYSTEM (git, bitbucket)] account.
+* Log in to Codefresh using your [INSERT_SCM_SYSTEM (git, bitbucket)] account.
+* Click the `Add Service` button.
+* Select the forked repository.
+* Select the `I have a Codefresh.yml file` option.
+* Complete the wizard.
+* Go to the pipeline and provide the environment variables
+* Rejoice!
+
+<p align="center">
+  <img src="./images/codefresh_cf_cli_example.png">
+</p>
