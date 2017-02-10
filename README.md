@@ -21,9 +21,7 @@ The Freestyle step basically let's you say "Hey, Codefresh! Here's a Docker imag
 cf-cli-step:
     image: node:latest
     commands:
-      - npm install -g @codefresh-io/cf-cli
-      - cf-cli login --token ${{TOKEN}} -u ${{USER}}
-      - cf-cli builds build -a ${{ACCOUNT}} -o ${{REPO_OWNER}} -r ${{REPO_NAME}} --branch ${{BRANCH}} --pipelineName ${{PIPELINE_NAME}}
+      - bash -c 'npm install -g @codefresh-io/cf-cli && cf-cli login --token ${{TOKEN}} -u ${{USER}} && cf-cli builds build -a ${{ACCOUNT}} -o ${{REPO_OWNER}} -r ${{REPO_NAME}} --branch ${{BRANCH}} --pipelineName ${{PIPELINE_NAME}}'
 ```
 
 The `image` field states which image should be used when creating the container (Similar to Travis CI's `language` or circleci`s `machine`).
