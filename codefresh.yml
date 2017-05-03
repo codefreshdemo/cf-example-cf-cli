@@ -1,7 +1,18 @@
 version: '1.0'
 steps:
-  # trigger the certain pipeline
-  cf-cli-step:
-    image: node:latest
-    commands:
-      - bash -c 'npm install -g @codefresh-io/cf-cli && cf-cli login --token ${{TOKEN}} -u ${{USER}} && cf-cli builds build -a ${{ACCOUNT}} -o ${{REPO_OWNER}} -r ${{REPO_NAME}} --branch ${{BRANCH}} --pipelineName ${{PIPELINE_NAME}}'
+  build_project:
+    type: build
+    working_directory: ${{main_clone}}
+    image_name: ncodefresh/common
+    dockerfile: Dockerfile
+    tag: ${{CF_BRANCH}}
+
+  build-all-repos:
+    image: ${{build_project}}
+    environment:
+      - TOKEN=${{TOKEN}}
+      - USER=nCodefresh
+      - ACCOUNT=nikolai
+      - REPO_OWNER=nCodefresh
+      - PIPELINE_NAME=express-angular
+      - BRANCH=master
