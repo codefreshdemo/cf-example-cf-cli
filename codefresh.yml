@@ -9,9 +9,9 @@ steps:
 
   build-all-repos:
     image: ${{build_project}}
-    commands:
-      - ls -l
-      - pwd
+#    commands:
+#      - ls -l
+#      - pwd
     environment:
       - TOKEN=${{TOKEN}}
       - USER=nCodefresh
