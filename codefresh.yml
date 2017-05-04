@@ -18,4 +18,4 @@ steps:
       - ACCOUNT=nikolai
       - REPO_OWNER=nCodefresh
       - PIPELINE_NAME=express-angular
-      - BRANCH=master
+      - BRANCH=${{CF_BRANCH}}
